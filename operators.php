@@ -54,4 +54,16 @@ var_dump($e1 > 10); // true, array always greater
 // will die with custom error
 //$my_file = @file('non_existent_file') or die ("Failed opening file: error was '$php_errormsg'" . PHP_EOL);
 
+/* increment/decrement */
+
+$c = 'B';
+$cc = 'Z';
+$ccc = '/';
+$b = 'A09';
+echo --$c . PHP_EOL; // B, no effect
+echo ++$c . PHP_EOL; // C
+echo ++$cc . PHP_EOL; // AA ?
+echo ++$ccc . PHP_EOL; // "/", only plain ASCII alphabets and digits
+echo ++$b . PHP_EOL; // A10
+
 echo PHP_EOL;
