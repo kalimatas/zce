@@ -1,5 +1,8 @@
 <?php
 
+setcookie('test[one]', 'one');
+setcookie('test[two]', 'two');
+
 echo '<pre>';
 
 $привет = "hello";
@@ -25,5 +28,37 @@ var_dump($_REQUEST);
 var_dump($_ENV);
 
 var_dump($argc);
+
+static $a = 0;
+$a++;
+echo $a . PHP_EOL;
+
+//static $i = 1 + 2; // error, no expressions
+
+$a = 'hello';
+$$a = 'world';
+
+echo "$a ${$a}" . PHP_EOL; // hello world
+
+class A {
+	public $hello = true;
+}
+
+var_dump((new A())->$a); // true -> A->hello
+//var_dump((new A())->$b); // Fatal error: Cannot access empty property
+var_dump((new A())->$hello); // null, A->world
+
+if ($_POST) {
+	var_dump($_POST);
+}
+
+?>
+
+<form action="" method="post">
+	<input name="a.b" />
+	<input type="image" src="/zce/basics/01_02_small.jpg" name="sub" />
+</form>
+
+<?php
 
 echo PHP_EOL;
