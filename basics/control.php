@@ -130,4 +130,19 @@ switch ($mixed) {
 }
 echo PHP_EOL;
 
+//return(); // no argument error
+
+$r = 10;
+function incr(&$param) {
+	$param++;
+	return ($param); // will return the value of $param, not the reference!
+}
+$r1 = incr($r);
+echo $r . PHP_EOL; // 11
+echo $r1 . PHP_EOL; // 11
+
+$r1++;
+echo $r . PHP_EOL; // 11
+echo $r1 . PHP_EOL; // 12
+
 echo PHP_EOL;
