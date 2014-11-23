@@ -83,6 +83,9 @@ var_dump(!$cClass instanceof A); // true
 var_dump($cClass instanceof $pClass); // true
 
 var_dump(is_a('C', 'P')); // false
-var_dump(is_a('C', 'P', true)); // true
+var_dump(is_a('C', 'P', true)); // true, no __autoload
+
+$aaa = null;
+var_dump(isset($aaa)); // false
 
 echo PHP_EOL;

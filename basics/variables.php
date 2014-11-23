@@ -39,6 +39,7 @@ $a = 'hello';
 $$a = 'world';
 
 echo "$a ${$a}" . PHP_EOL; // hello world
+//echo 'char: ' . $$a[1] . PHP_EOL; // undefined variable 'e'
 
 class A {
 	public $hello = true;
