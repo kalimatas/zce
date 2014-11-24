@@ -37,3 +37,14 @@ namespace {
 		echo 'global' . PHP_EOL;
 	}
 }
+
+namespace myapp\utils\hello {
+	function world() {
+		echo 'world' . PHP_EOL;
+	}
+}
+
+namespace myapp {
+	use myapp\utils\hello;
+	hello\world();
+}
