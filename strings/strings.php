@@ -17,7 +17,8 @@ if (strlen(count_chars("hello", 3)) != strlen("hello")) {
 }
 
 $checksum = crc32("The quick brown fox jumped over the lazy dog.");
-printf("%u\n", $checksum);
+$numPrinted = printf("%u\n", $checksum);
+echo 'numPrinted: ' . $numPrinted . PHP_EOL;
 
 var_dump(explode(' ', $str, -1)); // no last hello
 //var_dump(explode('', $str)); // false and warning
@@ -40,5 +41,14 @@ echo str_pad('ab', 5, '_', STR_PAD_BOTH) . PHP_EOL; // __ab___
 
 echo strlen('Ñ') . PHP_EOL; // 2
 echo iconv_strlen('Ñ') . PHP_EOL; // 2
+
+// formatting
+printf("%b\n", 8); // 1000
+printf("%'_20s\n", "hello"); // _______________hello
+printf("%.3e\n", 28784232); // 2.878e+7
+
+var_dump(sscanf("2.878e+7", "%e"));
+
+echo str_repeat("-=", "5") . PHP_EOL;
 
 echo PHP_EOL;

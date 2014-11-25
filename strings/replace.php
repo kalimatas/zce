@@ -14,4 +14,7 @@ $replace = array('pear', 'chiki');
 $r = str_replace($search, $replace, $str);
 var_dump($r); // "a chiki"
 
+str_replace("a", "z", "aabbcceeddaa", $var);
+var_dump($var); // 4, number of replacemenets done
+
 echo PHP_EOL;
