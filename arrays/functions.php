@@ -25,4 +25,10 @@ $carr = array(1, "1a", 1.0);
 var_dump(array_unique($carr)); // 1, 1a
 var_dump(array_unique($carr, SORT_REGULAR)); // 1
 
+$darr = array(
+	'', 10,
+);
+var_dump(in_array(false, $darr)); // true, loose comparison
+var_dump(in_array(false, $darr, true)); // false, strict comparison
+
 echo PHP_EOL;

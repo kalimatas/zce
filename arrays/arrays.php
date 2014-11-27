@@ -38,6 +38,10 @@ $a['a'] = null;
 $a['b'] = array();
 var_dump($a['a']['non-existent']); // null, DOES NOT throw an E_NOTICE error as expected.
 //var_dump($a['b']['non-existent']); // throws an E_NOTICE as expected
+echo 'isset: ' . PHP_EOL;
+var_dump(isset($a[5][7]));
+echo $a[5][7] = 2; // no notice
+var_dump($a); // now contains 2
 
 var_dump((array) null); // empty
 
