@@ -8,12 +8,30 @@ class T {
 	public static function getNew() {
 		return new static;
 	}
+
+	public static function getHelloConst() {
+		echo self::HELLO . PHP_EOL;
+		echo static::HELLO . PHP_EOL;
+	}
+
+	public function __destruct() {
+		echo static::class . ' destructor runs' . PHP_EOL;
+	}
 }
 
 class TT extends T {
 	const HELLO = 'hello const in TT';
-
 	public static $hello = '43';
+
+	public function tt() {
+		echo 'TT old style constructor runs' . PHP_EOL;
+	}
+
+	public function __construct() {
+		// emits E_STRICT: redefine constructor
+		echo 'TT new style constructor runs' . PHP_EOL;
+	}
+
 	public static function getParentHello() {
 		return parent::$hello;
 	}
@@ -33,5 +51,10 @@ var_dump(TT::getParentHello());
 
 var_dump(T::HELLO);
 var_dump(TT::HELLO);
+
+TT::getHelloConst();
+
+//throw new Exception(); destructors won't run
+
 
 echo PHP_EOL;
