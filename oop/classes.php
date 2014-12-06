@@ -14,6 +14,11 @@ class T {
 		echo static::HELLO . PHP_EOL;
 	}
 
+	public function test() {
+		//var_dump($this); // undefined if called statically
+		echo 'inside test' . PHP_EOL;
+	}
+
 	public function __destruct() {
 		echo static::class . ' destructor runs' . PHP_EOL;
 	}
@@ -56,5 +61,14 @@ TT::getHelloConst();
 
 //throw new Exception(); destructors won't run
 
+// fatal
+//var_dump((new T())->$hello);
+// works
+var_dump($c::$hello);
+// works
+(new T())->getHelloConst();
+
+// works, but E_STRICT
+T::test();
 
 echo PHP_EOL;
