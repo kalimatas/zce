@@ -22,6 +22,8 @@ class T {
 	public function __destruct() {
 		echo static::class . ' destructor runs' . PHP_EOL;
 	}
+
+	public function ca(TT $tt = null) {}
 }
 
 class TT extends T {
@@ -70,5 +72,12 @@ var_dump($c::$hello);
 
 // works, but E_STRICT
 T::test();
+
+// can use null instead of TT
+$c->ca(null);
+
+// __PHP_Incomplete_class
+$zzz = unserialize('O:1:"A":0:{}');
+var_dump($zzz);
 
 echo PHP_EOL;
