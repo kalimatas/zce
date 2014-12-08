@@ -4,6 +4,7 @@ class T {
 	const HELLO = 'hello const in T';
 
 	public static $hello = '42';
+	private $pr = 'private';
 
 	public static function getNew() {
 		return new static;
@@ -24,6 +25,10 @@ class T {
 	}
 
 	public function ca(TT $tt = null) {}
+
+	public function getPrivate() {
+		return $this->pr;
+	}
 }
 
 class TT extends T {
@@ -79,5 +84,8 @@ $c->ca(null);
 // __PHP_Incomplete_class
 $zzz = unserialize('O:1:"A":0:{}');
 var_dump($zzz);
+
+$cClone = clone $c;
+echo $cClone->getPrivate() . PHP_EOL;
 
 echo PHP_EOL;
