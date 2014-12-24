@@ -18,26 +18,18 @@ var_dump($matches);
 
 $phpRocks = "PhP5-rocks";
 
-$one = "/[a-z1-5\-]*/";
-$two = "/[php]{3}[1-5]{2,3}\-.*$/";
-$three = "/^[hp1-5]*\-.*/";
-$four = "/[hp1-5]*\-.?/";
-$five = " /[hp][1-5]*\-.*/";
+$patterns = [
+	"/[a-z1-5\-]*/",
+	"/[php]{3}[1-5]{2,3}\-.*$/",
+	"/^[hp1-5]*\-.*/",
+	"/[hp1-5]*\-.?/",
+	" /[hp][1-5]*\-.*/",
+];
 
-preg_match($one, $phpRocks, $matches);
-var_dump($matches); // matches
-
-preg_match($two, $phpRocks, $matches);
-var_dump($matches); // empty array
-
-preg_match($three, $phpRocks, $matches);
-var_dump($matches); // empty array
-
-preg_match($four, $phpRocks, $matches);
-var_dump($matches); // matches 5-r
-
-preg_match($five, $phpRocks, $matches);
-var_dump($matches); // empty array
-
+foreach ($patterns as $pattern) {
+	if (preg_match($pattern, $phpRocks)) {
+		printf("pattern \"%s\" matches %s\n", $pattern, $phpRocks);
+	}
+}
 
 echo PHP_EOL;
