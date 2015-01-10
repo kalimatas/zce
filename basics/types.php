@@ -42,4 +42,11 @@ echo $fromFunction, $here, $i, PHP_EOL;
 
 echo 'char: ', chr(178) . PHP_EOL;
 
+$obj = (object) array('1' => 'only through iteration', 'a' => 'yes');
+var_dump(isset($obj->{'1'})); // false, only numeric indices
+var_dump(isset($obj->a)); // true
+
+$obj1 = (object) 42;
+var_dump($obj1->scalar); // 42
+
 echo PHP_EOL;
