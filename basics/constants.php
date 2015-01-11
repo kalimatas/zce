@@ -5,6 +5,9 @@ if (true) {
 	define('Hello', 13);
 }
 
+define('42', 42);
+echo constant('42') . PHP_EOL;
+
 echo __LINE__ . PHP_EOL; // The current line number of the file.
 echo __line__ . PHP_EOL;
 
