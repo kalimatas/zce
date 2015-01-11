@@ -88,4 +88,12 @@ var_dump(is_a('C', 'P', true)); // true, no __autoload
 $aaa = null;
 var_dump(isset($aaa)); // false
 
+function test() {
+	return false;
+}
+
+if (!$a = test()) {
+	var_dump('a', $a); // here
+}
+
 echo PHP_EOL;
