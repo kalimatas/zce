@@ -96,4 +96,10 @@ if (!$a = test()) {
 	var_dump('a', $a); // here
 }
 
+$key = 4;
+//if (!$key % 2) {
+if (!($key % 2)) {
+	echo 'even' . PHP_EOL;
+}
+
 echo PHP_EOL;
