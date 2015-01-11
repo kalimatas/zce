@@ -29,6 +29,7 @@ var_dump($_ENV);
 
 var_dump($argc);
 
+//static $i = 1 + 1; // syntax error
 static $a = 0;
 $a++;
 echo $a . PHP_EOL;
@@ -48,6 +49,15 @@ class A {
 var_dump((new A())->$a); // true -> A->hello
 //var_dump((new A())->$b); // Fatal error: Cannot access empty property
 var_dump((new A())->$hello); // null, A->world
+
+$s = '_SERVER';
+//var_dump($$s); // works
+
+function test() {
+	$s = '_SERVER';
+	var_dump($$s); // notice: undefined variable; cannot use inside functions
+}
+test();
 
 if ($_POST) {
 	var_dump($_POST);
