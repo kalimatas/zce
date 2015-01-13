@@ -8,6 +8,7 @@ $a = array(
 	08 => 'a', // 0
 	null => 'empty', // ""
 	//$c => '1',  // Illegal offset type
+	.1 => 'wtf?!', // will become 0
 );
 var_dump($a);
 
