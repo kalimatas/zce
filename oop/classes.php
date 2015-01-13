@@ -34,6 +34,8 @@ class T {
 class TT extends T {
 	const HELLO = 'hello const in TT';
 	public static $hello = '43';
+	/** @var T */
+	protected $copy;
 
 	public function tt() {
 		echo 'TT old style constructor runs' . PHP_EOL;
@@ -42,6 +44,7 @@ class TT extends T {
 	public function __construct() {
 		// emits E_STRICT: redefine constructor
 		echo 'TT new style constructor runs' . PHP_EOL;
+		$this->copy = T::getNew();
 	}
 
 	public static function getParentHello() {
@@ -87,5 +90,7 @@ var_dump($zzz);
 
 $cClone = clone $c;
 echo $cClone->getPrivate() . PHP_EOL;
+
+$c4 = clone($c3);
 
 echo PHP_EOL;
