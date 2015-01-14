@@ -53,3 +53,15 @@ function &collector() {
 array_push(collector(), 'foo');
 //array_push(&collector(), 'foo'); // fatal
 var_dump(collector()); // foo is inside
+
+function func(&$arraykey) {
+	return $arraykey;
+}
+
+$array = array('a', 'b', 'c');
+foreach (array_keys($array) as $key) {
+	$y = &func($array[$key]);
+	$z[] = &$y;
+}
+
+var_dump($z); // c, c, c
