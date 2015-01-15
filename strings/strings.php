@@ -46,6 +46,7 @@ echo iconv_strlen('Ñ') . PHP_EOL; // 2
 printf("%b\n", 8); // 1000
 printf("%'_20s\n", "hello"); // _______________hello
 printf("%.3e\n", 28784232); // 2.878e+7
+printf('hello %2$-\'#10s and %1$10s bye %3$s', 'one', 'two', PHP_EOL); // hello two####### and        one bye
 
 var_dump(sscanf("2.878e+7", "%e"));
 
