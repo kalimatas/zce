@@ -11,6 +11,7 @@ $arr = array(
 	),
 );
 var_dump(array_column($arr, null, 'id')); // index by id
+var_dump(sprintf("count: %d", count($arr, COUNT_RECURSIVE))); // 6
 
 $barr = array(
 	1 => true,
@@ -30,5 +31,19 @@ $darr = array(
 );
 var_dump(in_array(false, $darr)); // true, loose comparison
 var_dump(in_array(false, $darr, true)); // false, strict comparison
+
+$keys = ['one', 'two'];
+$values = ['v1', 'v2', 'v3'];
+//var_dump(array_combine($keys, $values)); // false, warning: wrong params number
+
+$input = array("red", "green", "blue", "yellow");
+$extracted = array_splice($input, 1, count($input), "orange");
+var_dump($extracted); // green, blue, yello
+var_dump($input);
+
+// insert new data
+$extracted = array_splice($input, 1, 0, ['new']);
+var_dump($input); // now contains 'new'
+var_dump($extracted); // empty
 
 echo PHP_EOL;

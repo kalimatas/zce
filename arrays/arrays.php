@@ -43,6 +43,7 @@ echo 'isset: ' . PHP_EOL;
 var_dump(isset($a[5][7]));
 echo $a[5][7] = 2; // no notice
 var_dump($a); // now contains 2
+var_dump('isset a => null', isset($a['a'])); // false, because value is null
 
 var_dump((array) null); // empty
 
