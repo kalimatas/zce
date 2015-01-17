@@ -27,6 +27,14 @@ function d($f, $s = 'second') {
 }
 d(2);
 
+function byRef(&$v) {
+	var_dump(func_get_arg(0));
+	$v = 42;
+	var_dump(func_get_arg(0)); // new value
+}
+$b = 10;
+byRef($b);
+
 class F {
 	static $variable = 'fe';
 	static function test() {}
@@ -36,5 +44,17 @@ echo F::$variable() . PHP_EOL; // will call method "test"
 
 $c = function() use ($a) {};
 var_dump($c); // object Closure, static array with a
+
+function leftDefault($one = 'value', $two) {
+	var_dump($one); // two
+	var_dump(func_get_args()); // one element - 'two' value
+}
+leftDefault('two'); // PHP Warning:  Missing argument 2 for leftDefault()
+
+function notunique($x, $y = 1, $y = 2) {
+	var_dump($x, $y);
+	var_dump(func_num_args()); // 1
+}
+notunique(1); // x = 1, y = 2
 
 echo PHP_EOL;
