@@ -50,6 +50,10 @@ class TT extends T {
 	public static function getParentHello() {
 		return parent::$hello;
 	}
+
+	public static function testConst() {
+		return self::HELLO;
+	}
 }
 
 $name = 't';
@@ -77,6 +81,8 @@ TT::getHelloConst();
 var_dump($c::$hello);
 // works
 (new T())->getHelloConst();
+
+var_dump(TT::testConst()); // inherited
 
 // works, but E_STRICT
 T::test();
