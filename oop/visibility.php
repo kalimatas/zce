@@ -8,10 +8,31 @@ class P {
 	public function getChildProtected() {
 		return $this->childProtected . PHP_EOL;
 	}
+
+	public function testVisiblity() {
+		$this->testPublic();
+		$this->testPrivate();
+	}
+
+	public function testPublic() {
+		echo 'P::public' . PHP_EOL;
+	}
+
+	private function testPrivate() {
+		echo 'P::private' . PHP_EOL;
+	}
 }
 
 class C extends P {
 	protected $childProtected = 42;
+
+	public function testPublic() {
+		echo 'C::public' . PHP_EOL;
+	}
+
+	private function testPrivate() {
+		echo 'C::private' . PHP_EOL;
+	}
 }
 
 class T {
@@ -43,5 +64,7 @@ var_dump((new C())->private);
 
 // calling private method
 (new T(42))->test(new T('blah'));
+
+(new C())->testVisiblity(); // C::public, P::private
 
 echo PHP_EOL;
