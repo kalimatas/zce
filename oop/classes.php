@@ -73,12 +73,16 @@ var_dump(TT::HELLO);
 
 TT::getHelloConst();
 
+// Notice: undefined
+var_dump($c->ewfiohoiwefh); // null
+
 //throw new Exception(); destructors won't run
 
 // fatal
 //var_dump((new T())->$hello);
 // works
 var_dump($c::$hello);
+var_dump($c3::$hello);
 // works
 (new T())->getHelloConst();
 

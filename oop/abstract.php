@@ -18,11 +18,16 @@ class C extends A {
 	}
 }
 
-abstract class B extends A {}
+abstract class B extends A {
+	public function __construct() {
+
+	}
+}
 
 interface I {
 	const T = 42;
 
+	public function __construct($a);
 	public function hello($a, $b = 2);
 }
 
@@ -31,11 +36,19 @@ interface II extends I {
 	//const T = 43;
 }
 
-abstract class CI implements II {}
+interface III {
+	public function hello($a, $b = 4); // the same as I::hello (but default value doesn't match), can use two interfaces
+}
+
+abstract class CI implements II, III {}
 
 class T extends CI {
-	public function hello($a, $c = 2, $b = 3) {
+	public function __construct($a, $v = 2) {
+
 	}
+
+	//public function hello($a, $c) {} // fatal: not compatible
+	public function hello($a, $c = 3, $b = 3) {} // default value doesn't match, but works
 }
 
 echo PHP_EOL;
