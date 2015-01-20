@@ -8,6 +8,8 @@ try {
 		throw new Exception();
 	} catch (Exception $e) {
 		echo 'simple exception' . PHP_EOL;
+	} finally {
+		echo 'always echoed' . PHP_EOL;
 	}
 
 } catch (Exception $e) {
