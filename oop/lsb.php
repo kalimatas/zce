@@ -20,6 +20,7 @@ class C extends A {
 
 (new B)->test();
 // prints 'A foo' and fatal
+// Call to private method C::foo() from context 'A'
 (new C)->test();
 
 
