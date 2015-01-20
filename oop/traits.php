@@ -4,12 +4,14 @@ trait T {
 	public $h = 42;
 	public function test() {
 		echo 'trait test method' . PHP_EOL;
+		$this->calledFromTrait(); // works
 	}
 	abstract protected function abs($a);
 }
 
 trait TT {
 	//public $h = 43; // will cause fatal, cannot alias or use
+	//public $h = 42; // will cause strict, but works
 	public function test() {
 		echo 'TT trait test method' . PHP_EOL;
 	}
@@ -40,7 +42,7 @@ class C extends P {
 		T::test insteadof TT;
 		TT::test as newTest;
 		TT::pub as protected;
-		TT::priv as public;
+		TT::priv as public newPriv; // change visibility and name
 	}
 
 	// will override trait's
@@ -51,6 +53,10 @@ class C extends P {
 	// works, no error
 	public function abs() {
 		echo 'from abs' . PHP_EOL;
+	}
+
+	private function calledFromTrait() {
+		echo 'called from trait' . PHP_EOL;
 	}
 }
 
@@ -67,7 +73,7 @@ echo (new C())->h . PHP_EOL;
 //(new C())->pub();
 
 // works
-(new C())->priv();
+(new C())->newPriv();
 
 (new C())->abs();
 
