@@ -16,6 +16,7 @@ echo date(DATE_RFC2822) . PHP_EOL;
 
 $timeZone = new DateTimeZone('Europe/Moscow');
 $offset = $timeZone->getOffset(new DateTime());
+echo $offset . PHP_EOL; // 10800
 
 echo date('Y-m-d H:i:s', mktime(25, 65)) . PHP_EOL; // jump to the next period
 
