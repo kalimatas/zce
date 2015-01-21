@@ -24,8 +24,11 @@ var_dump(json_encode($a1)); // now it's an object, nonsequential
 
 var_dump(json_encode(1, JSON_FORCE_OBJECT)); // just "1"
 
-$valid = '{"key": "value"}';
+$valid = '{"key": "value", "flag": true, "empty": null}';
 $validDecoded = json_decode($valid);
+var_dump($validDecoded); // stdClass
+$validDecodedArray = json_decode($valid, true);
+var_dump($validDecodedArray); // array
 var_dump(json_last_error()); // 0
 var_dump(json_last_error_msg()); // "No Error"
 
