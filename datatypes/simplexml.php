@@ -13,6 +13,12 @@ $no = simplexml_load_file('no_such_file.xml');
 if ($no === false) {
 	print_r(libxml_get_errors());
 }
+
+try {
+	new SimpleXMLElement('<invalid xml'); // throws exception
+} catch (Exception $e) {
+	echo 'got exception' . PHP_EOL;
+}
 libxml_use_internal_errors(false);
 
 // import from DOM
