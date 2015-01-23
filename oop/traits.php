@@ -31,6 +31,12 @@ trait Counter {
 	}
 }
 
+trait WithConstructor {
+	public function __construct() {
+		echo 'trait constructor' . PHP_EOL;
+	}
+}
+
 class P {
 	public function test() {
 		echo 'parent test method' . PHP_EOL;
@@ -64,6 +70,13 @@ class C1 {
 	use Counter;
 }
 
+class C2 {
+	use WithConstructor;
+
+	// no trait constructor is called if class constructor is defined
+	//public function __construct() {}
+}
+
 // trait test method
 (new C())->test();
 (new C())->newTest();
@@ -83,5 +96,7 @@ $c->incr(); // 2
 
 $c1 = new C1;
 $c1->incr(); // 1
+
+$c2 = new C2; // trait constructor
 
 echo PHP_EOL;
