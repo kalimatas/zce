@@ -1,7 +1,8 @@
 <?php
 
 var_dump(getcwd());
-
+var_dump(basename(__FILE__, '.php')); // io
+var_dump(basename('/')); // ""
 var_dump(realpath("/no/such/file")); // false
 
 $tLink = __DIR__ . DIRECTORY_SEPARATOR . '../README.md';
