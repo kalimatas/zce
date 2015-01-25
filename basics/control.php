@@ -101,13 +101,17 @@ for( $i = 0; $i < 3; ++ $i ) {
 
 echo PHP_EOL;
 
+function g() {
+	return 42;
+}
+
 switch ($a) {
 	default;
 		echo 'inside default' . PHP_EOL;
 		break;
 	case 10;
 		break;
-	case 22 + 20;
+	case g();
 		echo 'inside 42' . PHP_EOL;
 		break;
 }

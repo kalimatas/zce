@@ -35,6 +35,16 @@ function byRef(&$v) {
 $b = 10;
 byRef($b);
 
+function eblanstvo($x, $x = 1, $x = 2) {
+	var_dump(func_get_args());
+	var_dump(func_get_arg(0));
+	var_dump(func_get_arg(1));
+	//var_dump(func_get_arg(2)); // warning, no argument
+	return $x;
+}
+
+echo eblanstvo(3, 4); // 2 O_o
+
 class F {
 	static $variable = 'fe';
 	static function test() {}
