@@ -1,16 +1,7 @@
 <?php
 
 /*
-typedef struct _zval_struct {
-    zvalue_value value;        // variable value      // 16
-	zend_uint refcount__gc;    // reference counter   // 4
-    zend_uchar type;           // value type          // 1
-    zend_uchar is_ref__gc;     // reference flag	  // 1
-} zval;
-*/
-
-/*
-typedef union _zvalue_value {
+typedef union _zvalue_value {  // 16, max from union
     long lval;                 // long value
 	double dval;               // double value
     struct {       // 16
@@ -20,6 +11,15 @@ typedef union _zvalue_value {
     HashTable *ht;             // an array
     zend_object_value obj;     // stores an object store handle, and handlers
 } zvalue_value;
+*/
+
+/*
+typedef struct _zval_struct {                         // 22 + alignment == 24
+    zvalue_value value;        // variable value      // 16
+	zend_uint refcount__gc;    // reference counter   // 4
+    zend_uchar type;           // value type          // 1
+    zend_uchar is_ref__gc;     // reference flag	  // 1
+} zval;
 */
 
 /*
@@ -35,7 +35,7 @@ typedef struct _gc_root_buffer {
 */
 
 /*
-typedef struct _zval_gc_info {
+typedef struct _zval_gc_info { // 8, pointer
 	zval z;
 	union {
 		gc_root_buffer       *buffered;
@@ -45,18 +45,19 @@ typedef struct _zval_gc_info {
 */
 
 /*
-char *  8
-unsigned char 1
-unsigned int 4
-unsigned long 8
-double 8
+typedef struct _zend_mm_block_info { // 16
+#if ZEND_MM_COOKIES
+    size_t _cookie;
+#endif
+    size_t _size; //contains allocation size // 8
+    size_t _prev; //info on previous block   // 8
+} zend_mm_block_info;
 */
+
+// Sum: 48
 
 echo memory_get_usage() . PHP_EOL;
 $a = 255;
 echo memory_get_usage() . PHP_EOL;
-
-//debug_zval_dump($a);
-
 
 echo PHP_EOL;
