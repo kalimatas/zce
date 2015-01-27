@@ -5,6 +5,7 @@
 // will be called anyway
 set_error_handler(function($errno, $errstr) {
 	printf("error: [%d] %s\n", $errno, $errstr);
+	//debug_print_backtrace();
 	//return false; // will cause default error handler to run
 });
 
