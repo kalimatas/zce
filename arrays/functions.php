@@ -21,6 +21,7 @@ $barr = array(
 );
 var_dump(array_keys($barr, true)); // 1, 3, 4
 var_dump(array_keys($barr, true, true)); // 1, 3 // strict
+//var_dump(array_count_values($barr)); warning: can only count string and integer. outputs array with one elem "1"
 
 $carr = array(1, "1a", 1.0);
 var_dump(array_unique($carr)); // 1, 1a
