@@ -22,4 +22,13 @@ foreach ($entities as $en) {
 	printf("%s by %s\n", $en->previousSibling->previousSibling->nodeValue, $en->previousSibling->nodeValue);
 }
 
+$noHeader = <<<'NOHEADER'
+<p>hello text from tag</p>
+NOHEADER;
+
+$docHTML = new DOMDocument();
+$docHTML->loadHTML($noHeader);
+// add doctype, html, body
+print_r($docHTML->saveHTML());
+
 echo PHP_EOL;
