@@ -6,6 +6,9 @@ $doc->preserveWhiteSpace = false;
 print_r($doc->saveXML());
 
 $doc->load(__DIR__ . DIRECTORY_SEPARATOR . 'book.xml'); // warning if not exists
+printf("doc id is %s\n", $doc->documentElement->attributes->getNamedItem('id')->nodeValue);
+$doc->documentElement->setAttribute('id', 'new id');
+printf("doc id is %s\n", $doc->documentElement->attributes->getNamedItem('id')->nodeValue);
 foreach ($doc->getElementsByTagName('*') as $item) {
 	/** @var DOMElement $item */
 	printf("%s, %s\n", $item->getNodePath(), $item->nodeType);
