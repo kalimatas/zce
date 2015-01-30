@@ -1,6 +1,6 @@
 <?php
 
-preg_match('//', 'str');
+preg_match('//', 'str', $matches);
 var_dump(preg_last_error()); // 0
 
 var_dump(preg_match("/\d+/", "hello")); // 0
@@ -18,6 +18,27 @@ var_dump($matches); // all numbers
 echo PHP_EOL;
 preg_match_all("/.*(\d{2,3}?).*$/m", "hello 423 \n no way 10", $matches);
 var_dump($matches);
+
+preg_match_all("/\(?  (\d{3})?  \)?  (?(1)  [\-\s] ) \d{3}-\d{4}/x", "Call 555-1212 or 1-800-555-1212", $phones);
+
+echo preg_replace(array('/\d/', '/\s/'), '*', 'xp 4 to', -1 , $count) . PHP_EOL; // x***to
+
+$subject = array('1', 'a');
+$pattern = array('/\d/', '/[a-z]/', '/[1a]/');
+$replace = array('A:$0', 'B:$0', 'C:$0');
+// 1 -> A:1 -> A:C:1
+
+print_r(preg_replace($pattern, $replace, $subject));
+print_r(preg_filter($pattern, $replace, $subject));
+
+$html = "<h3>hello text</h3>";
+$html = preg_replace_callback(
+	'(<h([1-6])>(.*?)</h\1>)',
+	function ($m) {
+		return "<h$m[1]>" . strtoupper($m[2]) . "</h$m[1]>";
+	},
+	$html
+);
 
 $phpRocks = "PhP5-rocks";
 
