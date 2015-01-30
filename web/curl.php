@@ -4,6 +4,8 @@ $url = 'google.com';
 
 $ch = curl_init();
 var_dump($ch); // resource(4) of type (curl)
+//$clone = clone $ch; fatal
+$clone = curl_copy_handle($ch); // ok
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
