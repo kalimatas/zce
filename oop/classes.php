@@ -4,6 +4,7 @@ class T {
 	const HELLO = 'hello const in T';
 
 	public static $hello = '42';
+	public $t = 'some string';
 	private $pr = 'private';
 
 	public static function getNew() {
@@ -54,6 +55,10 @@ class TT extends T {
 	public static function testConst() {
 		return self::HELLO;
 	}
+
+	public function modifyPrivate() {
+		$this->copy->t = 'modified string';
+	}
 }
 
 $name = 't';
@@ -102,5 +107,6 @@ $cClone = clone $c;
 echo $cClone->getPrivate() . PHP_EOL;
 
 $c4 = clone($c3);
+$c3->modifyPrivate();
 
 echo PHP_EOL;
