@@ -1,6 +1,7 @@
 <?php
 
 trait T {
+	private $pr = 'private access';
 	public $h = 42;
 	public function test() {
 		echo 'trait test method' . PHP_EOL;
@@ -38,6 +39,8 @@ trait WithConstructor {
 }
 
 class P {
+	private $prFromClass = 'private from class';
+
 	public function test() {
 		echo 'parent test method' . PHP_EOL;
 	}
@@ -64,6 +67,15 @@ class C extends P {
 	private function calledFromTrait() {
 		echo 'called from trait' . PHP_EOL;
 	}
+
+	public function getPrivateFromTrait() {
+		// pr from trait
+		echo $this->pr . PHP_EOL;
+	}
+
+	public function getPrivateFromClass() {
+		echo $this->prFromClass . PHP_EOL;
+	}
 }
 
 class C1 {
@@ -89,6 +101,12 @@ echo (new C())->h . PHP_EOL;
 (new C())->newPriv();
 
 (new C())->abs();
+
+// works
+(new C())->getPrivateFromTrait();
+
+// notice: undefined
+(new C())->getPrivateFromClass();
 
 $c = new C;
 $c->incr();
